@@ -1,0 +1,21 @@
+<!--<h1>QR-Kassenbon</h1> -->
+<h3>Filiale: {{ $ctrl.bon.store }}</h3>	  	
+<h4>Gekauft am: {{ $ctrl.bon.date }}</h4>
+
+<h1 class="Gekauft">Gekauft:</h1>
+
+
+<md-list>
+
+  <md-list-item ng-repeat="item in $ctrl.bon.items | orderBy:'name'">
+    {{ item.amount }} x {{ item.name }}
+    <div class="md-secondary" ng-click="doSecondaryAction($event)">{{ item.price }}€</div>
+  </md-list-item>
+
+
+  <md-divider></md-divider>
+  <md-list-item>
+    <h2>Gesamt:</h2>
+    <div class="md-secondary">{{ $ctrl.bon.items | total:'price' }}€</div>
+  </md-list-item>
+<md-list>
